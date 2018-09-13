@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -38,6 +39,7 @@ public class Entry extends AppCompatActivity {
             public void onClick(View view) {
                 demoRef.push().setValue(editText.getText().toString());
                 demoref2.push().setValue(editText2.getText().toString());
+                Toast.makeText(Entry.this,"Submitted",Toast.LENGTH_SHORT).show();
 
 
             }
@@ -54,7 +56,7 @@ public class Entry extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                        ArrayList<String> Userlist = new ArrayList<String>();
-                       String s="";
+                       String s="";                 
                        // Result will be holded Here
                         for (DataSnapshot dsp : dataSnapshot.getChildren()) {
                             Userlist.add(String.valueOf(dsp.getValue())); //add result into array list
